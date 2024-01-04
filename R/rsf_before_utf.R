@@ -72,8 +72,8 @@ irsf.default <- function(finess, annee, mois, path, lib = T, stat = T,
     # cat(paste("L'objet retourné prendra la forme d'une classe S3.
     #           $A pour les RSF A, et B, C, ...\n"))
     
-    annee = ifelse(annee == 2024,2023,annee)
-    formats <- pmeasyr::formats %>% dplyr::filter(champ == "rsf", table == "rsf", an == substr(annee, 3, 4))
+    annee_n_moins = ifelse(annee == 2024,2023,annee)
+    formats <- pmeasyr::formats %>% dplyr::filter(champ == "rsf", table == "rsf", an == substr(annee_n_moins, 3, 4))
     # formats <- formats %>% dplyr::filter(champ == "rsf", table == "rsf", an == substr(annee, 3, 4))
     
     r <- readr::read_fwf(paste0(path,"/",finess,".",annee,".",mois,".rsf.txt"),
