@@ -57,7 +57,7 @@ irsf.list <- function(l, ...){
 irsf.default <- function(finess, annee, mois, path, lib = T, stat = T, 
                          lister = c('A', 'B', 'C', 'H', 'L', 'M',  'P'), 
                             lamda = F, tolower_names = F, ...){
-  if (annee<2011|annee > 2023){
+  if (annee<2011|annee > 2024){
     stop('Année PMSI non prise en charge\n')
   }
   if (mois<1|mois>12){
@@ -72,7 +72,7 @@ irsf.default <- function(finess, annee, mois, path, lib = T, stat = T,
     # cat(paste("L'objet retourné prendra la forme d'une classe S3.
     #           $A pour les RSF A, et B, C, ...\n"))
     
-    
+    annee = ifelse(annee == 2024,2023,annee)
     formats <- pmeasyr::formats %>% dplyr::filter(champ == "rsf", table == "rsf", an == substr(annee, 3, 4))
     # formats <- formats %>% dplyr::filter(champ == "rsf", table == "rsf", an == substr(annee, 3, 4))
     
